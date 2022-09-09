@@ -19,7 +19,7 @@ function MovieForm(props) {
       .catch(error => console.log(error))
   }
   const createClicked = () => {
-    API.createMovie( { title, description })
+    API.createMovie({ title, description })
       .then(resp => props.movieCreated(resp))
       // TODO: display error message
       .catch(error => console.log(error))
@@ -40,7 +40,6 @@ function MovieForm(props) {
           {props.movie.id ?
             <button onClick={updateClicked}>Update</button> :
             <button onClick={createClicked}>Create</button>
-
           }
 
         </div>

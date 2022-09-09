@@ -1,6 +1,15 @@
 const TOKEN = "32912ccf989e862597a9e9fff3db1d93f5af2529";
 
 export class API {
+  static loginUser(body) {
+    return fetch('http://127.0.0.1:8000/auth/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    }).then(resp => resp.json())
+  }
   static updateMovie(mov_id, body) {
     return fetch(`http://127.0.0.1:8000/api/movies/${mov_id}/`, {
       method: 'PUT',
