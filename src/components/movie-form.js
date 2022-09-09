@@ -1,27 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { API } from '../api-service';
 
 function MovieForm(props) {
 
-  const [ title, setTitle ] = useState(props.movie.title);
-  const [ description, setDescription ] = useState(props.movie.description);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+
+  useEffect(() => {
+    setTitle(props.movie.title);
+    setDescription(props.movie.description);
+  }, [props.movie])
+
 
   const updateClicked = () => {
-    console.log('update here')
+    API.updateMovie(props.movie.id, { title, description })
+      .then(resp => props.updatedMovie(resp))
+      // TODO: display error message
+      .catch(error => console.log(error))
+  }
+  const createClicked = () => {
+    API.createMovie( { title, description })
+      .then(resp => props.movieCreated(resp))
+      // TODO: display error message
+      .catch(error => console.log(error))
   }
 
   return (
     <React.Fragment>
       {props.movie ? (
         <div>
-          <label for="title">Title</label><br />
+          <label htmlFor="title">Title</label><br />
           <input id="title" type="text" placeholder="title" value={title}
-          onChange={ e => setTitle(e.target.value)}
+            onChange={e => setTitle(e.target.value)}
           /><br />
-          <label for="description">Description</label><br />
-          <textarea id="description" type="text" placeholder="description" 
-          value={description} onChange={ e => setDescription(e.target.value)}
+          <label htmlFor="description">Description</label><br />
+          <textarea id="description" type="text" placeholder="description"
+            value={description} onChange={e => setDescription(e.target.value)}
           ></textarea><br />
-          <button onClick={updateClicked}>Update</button>
+          {props.movie.id ?
+            <button onClick={updateClicked}>Update</button> :
+            <button onClick={createClicked}>Create</button>
+
+          }
+
         </div>
 
       ) : null}

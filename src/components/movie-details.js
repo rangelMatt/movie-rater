@@ -25,7 +25,7 @@ function MovieDetails(props) {
       body: JSON.stringify({ stars: rate + 1 }),
     })
       .then( () => getDetails())
-      // todo: display error message
+      // TODO: display error message
       .catch(error => console.log(error))
   }
 
@@ -39,7 +39,7 @@ function MovieDetails(props) {
     })
       .then(resp => resp.json())
       .then(resp => props.updateMovie(resp))
-      // todo: display error message
+      // TODO: display error message
       .catch(error => console.log(error))
   }
 
