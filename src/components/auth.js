@@ -7,12 +7,12 @@ function Auth() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const {token, setToken} = useContext(TokenContext);
+  const { token, setToken } = useContext(TokenContext);
 
-  useEffect( () => {
-    console.log(token);
-    if(token) window.location.href = '/movies'
-  }, [token]) 
+  useEffect(() => {
+    // console.log(token);
+    if (token[TokenContext]) window.location.href = '/movies'
+  }, [token])
 
   const loginClicked = () => {
     API.loginUser(username, password)
