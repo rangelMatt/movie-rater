@@ -1,4 +1,4 @@
-const TOKEN = "32912ccf989e862597a9e9fff3db1d93f5af2529";
+
 
 export class API {
   static loginUser(body) {
@@ -10,24 +10,33 @@ export class API {
       body: JSON.stringify(body)
     }).then(resp => resp.json())
   }
-  static updateMovie(mov_id, body) {
+  static updateMovie(mov_id, body, token) {
     return fetch(`http://127.0.0.1:8000/api/movies/${mov_id}/`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Token ${TOKEN}`
+        'Authorization': `Token ${token}`
       },
       body: JSON.stringify(body),
     }).then(resp => resp.json())
   }
-  static createMovie( body) {
+  static createMovie( body, token) {
     return fetch(`http://127.0.0.1:8000/api/movies/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Token ${TOKEN}`
+        'Authorization': `Token ${token}`
       },
       body: JSON.stringify(body),
     }).then(resp => resp.json())
+  }
+  static deleteMovie( mov_id, token) {
+    return fetch(`http://127.0.0.1:8000/api/movies/${mov_id}/`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${token}`
+      }
+    })
   }
 }
