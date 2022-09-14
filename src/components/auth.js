@@ -1,26 +1,26 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { API } from '../api-service';
-import { TokenContext } from '../index';
+import { useCookies } from 'react-cookie';
 
 function Auth() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const { token, setToken } = useContext(TokenContext);
+  const [token, setToken] = useCookies(['mr-token']);
 
   useEffect(() => {
-    // console.log(token);
-    if (token[TokenContext]) window.location.href = '/movies'
+    console.log(token);
+    if (token['mr-token']) window.location.href = '/movies'
   }, [token])
 
   const loginClicked = () => {
-    API.loginUser(username, password)
-      .then(resp => setToken(resp.token))
+    API.loginUser({ username, password })
+      .then(resp => setToken('mr-token', resp.token))
       .catch(error => console.log(error))
   }
   return (
-    <form>
+    <div className="login-container">
       <label htmlFor="username">Username</label><br />
       <input id="username" type="text" placeholder="username" value={username}
         onChange={e => setUsername(e.target.value)}
@@ -32,7 +32,7 @@ function Auth() {
       <button onClick={loginClicked}>Login</button>
 
 
-    </form>
+    </div>
   )
 }
 
