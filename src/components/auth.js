@@ -24,27 +24,35 @@ function Auth() {
       .then(() => loginClicked())
       .catch(error => console.log(error))
   }
+
+  const isDisabled = username.length === 0 || password.length === 0;
+
   return (
-    <div className="login-container">
-      {isLoginView ? <h1>Login</h1> : <h1>Register</h1>}
-      <label htmlFor="username">Username</label><br />
-      <input id="username" type="text" placeholder="username" value={username}
-        onChange={e => setUsername(e.target.value)}
-      /><br />
-      <label htmlFor="password">Password</label><br />
-      {/* TODO: add autofill for password and maybe username */}
-      <input id="password" type="password" placeholder="current-password"
-        value={password} onChange={e => setPassword(e.target.value)} /><br />
-      {isLoginView ?
-        <button onClick={loginClicked}>Login</button> :
-        <button onClick={registerClicked}>Register</button>}
-
-      {isLoginView ?
-        <p onClick={() => setIsLoginView(false)}>You don't have an account? Please register here!</p> :
-        <p onClick={() => setIsLoginView(true)}>You are already have an account? Login here</p>}
+    <div className="App">
+      <header className="App-header">
+        {isLoginView ? <h1>Login</h1> : <h1>Register</h1>}
+      </header>
+      <div className="login-container">
 
 
+        <label htmlFor="username">Username</label><br />
+        <input id="username" type="text" placeholder="username" value={username}
+          onChange={e => setUsername(e.target.value)}
+        /><br />
+        <label htmlFor="password">Password</label><br />
+        {/* TODO: add autofill for password and maybe username */}
+        <input id="password" type="password" placeholder="current-password"
+          value={password} onChange={e => setPassword(e.target.value)} /><br />
+        {isLoginView ?
+          <button onClick={loginClicked} disabled={isDisabled}>Login</button> :
+          <button onClick={registerClicked} disabled={isDisabled}>Register</button>}
 
+        {isLoginView ?
+          <p onClick={() => setIsLoginView(false)}>You don't have an account? Please register here!</p> :
+          <p onClick={() => setIsLoginView(true)}>You are already have an account? Login here</p>}
+
+
+      </div>
 
     </div>
   )
