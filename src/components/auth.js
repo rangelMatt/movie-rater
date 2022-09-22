@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { API } from '../api-service';
 import { useCookies } from 'react-cookie';
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Auth() {
 
@@ -47,9 +49,26 @@ function Auth() {
           <button onClick={loginClicked} disabled={isDisabled}>Login</button> :
           <button onClick={registerClicked} disabled={isDisabled}>Register</button>}
 
+        <hr></hr>
         {isLoginView ?
-          <p onClick={() => setIsLoginView(false)}>You don't have an account? Please register here!</p> :
-          <p onClick={() => setIsLoginView(true)}>You are already have an account? Login here</p>}
+          <div>Don't have an account yet?
+            <p>
+              <Button
+                variant="link"
+                className='here-button'
+                onClick={() => setIsLoginView(false)}
+              >Create an account</Button>
+            </p>
+          </div> :
+          <div> You are already have an account?
+            <p>
+            <Button
+              variant="link"
+              className='here-button'
+              onClick={() => setIsLoginView(true)}
+            >Login here</Button>
+            </p>
+          </div>}
 
 
       </div>
