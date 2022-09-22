@@ -11,15 +11,14 @@ export class API {
       body: JSON.stringify(body)
     }).then(resp => resp.json())
   }
-  static async registerUser(body) {
-    const resp = await fetch(`${API_SERVER}/api/users/`, {
+  static registerUser(body) {
+    return fetch(`${API_SERVER}/api/users/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(body)
-    })
-    return await resp.json()
+    }).then(resp => resp.json())
   }
 
   static getMovies(token) {
