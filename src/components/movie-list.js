@@ -18,8 +18,8 @@ function MovieList(props) {
   }
   const removeClicked = movie => {
     API.deleteMovie(movie.id, token['mr-token'])
-    .then(() => props.removeClicked(movie))
-    .catch(error => console.log())
+      .then(() => props.removeClicked(movie))
+      .catch(error => console.log())
     props.removeClicked(movie);
   }
 
@@ -29,8 +29,8 @@ function MovieList(props) {
         return (
           <div key={movie.id} className="movie-item">
             <h2 onClick={movieClicked(movie)}>{movie.title}</h2>
-            <FontAwesomeIcon icon={faEdit} onClick={() => editClicked(movie)}/>
-            <FontAwesomeIcon icon={faTrash} onClick={() => removeClicked(movie)}/>
+            <FontAwesomeIcon icon={faEdit} onClick={() => editClicked(movie)} />
+            <FontAwesomeIcon icon={faTrash} onClick={() => removeClicked(movie)} />
           </div>
         )
       })}
