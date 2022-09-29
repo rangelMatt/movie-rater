@@ -65,9 +65,7 @@ function MovieDetails(props) {
                 onMouseLeave={highlightRate(-1)}
                 onClick={rateClicked(i)}
               />
-            })
-
-            }
+            })}
           </div>
         </div>
       ) : null}
