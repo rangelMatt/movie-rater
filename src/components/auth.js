@@ -9,6 +9,8 @@ function Auth() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoginView, setIsLoginView] = useState(true);
+  const [userError, setUserError] = useState(false);
+  const [regError, setRegError] = useState(false)
 
   const [token, setToken] = useCookies(['mr-token']);
 
@@ -18,14 +20,40 @@ function Auth() {
 
   const loginClicked = () => {
     API.loginUser({ username, password })
-      .then(resp => setToken('mr-token', resp.token))
+      .then(resp => checkToken(resp))
       .catch(error => console.log(error))
   }
+
+  const checkToken = resp => {
+    if (resp.token) {
+      setToken('mr-token', resp.token);
+    } else {
+      setUserError(true)
+    }
+  }
+
   const registerClicked = () => {
     API.registerUser({ username, password })
-      .then(() => loginClicked())
+      .then(() => checkReg())
       .catch(error => console.log(error))
   }
+
+  const checkReg = (resp) => {
+    if (!resp.id) {
+      setRegError(true)
+      console.log('nope')
+    } else {
+      loginClicked()
+    }
+  }
+  useEffect(() => {
+    if (isLoginView) {
+      setRegError(false)
+    } else {
+      setUserError(false)
+    }
+  }, [isLoginView])
+
 
   const isDisabled = username.length === 0 || password.length === 0;
 
@@ -45,10 +73,12 @@ function Auth() {
         {/* TODO: add autofill for password and maybe username */}
         <input id="password" type="password" placeholder="current-password"
           value={password} onChange={e => setPassword(e.target.value)} /><br />
+
+        {regError ? <p style={{ color: "red" }}>A user with that <br />name already exists.</p> : null}
+        {userError ? <p style={{ color: "red" }}>Username or<br /> Password Incorrect.</p> : null}
         {isLoginView ?
           <button onClick={loginClicked} disabled={isDisabled}>Login</button> :
           <button onClick={registerClicked} disabled={isDisabled}>Register</button>}
-
         <hr></hr>
         {isLoginView ?
           <div>Don't have an account yet?
@@ -62,11 +92,11 @@ function Auth() {
           </div> :
           <div> You are already have an account?
             <p>
-            <Button
-              variant="link"
-              className='here-button'
-              onClick={() => setIsLoginView(true)}
-            >Login here</Button>
+              <Button
+                variant="link"
+                className='here-button'
+                onClick={() => setIsLoginView(true)}
+              >Login here</Button>
             </p>
           </div>}
 
