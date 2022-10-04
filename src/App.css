@@ -93,6 +93,15 @@ h1 .fa-film {
   font-size: 1.5rem;
 }
 
+.fa-right-from-bracket:hover {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color:crimson;
+}
+
 .here-button {
   cursor: pointer;
 }

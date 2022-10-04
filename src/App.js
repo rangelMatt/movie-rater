@@ -16,6 +16,15 @@ function App() {
   const [editedMovie, setEditedMovie] = useState(null);
   const [token, setToken, deleteToken] = useCookies(['mr-token']);
   const [data, loading, error] = useFetch();
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHovering(false);
+  }
 
   useEffect(() => {
     setMovies(data);
@@ -77,7 +86,16 @@ function App() {
           <FontAwesomeIcon icon={faFilm} />
           <span>Movie Rater</span>
         </h1>
-        <FontAwesomeIcon icon={faSignOutAlt} onClick={logoutUser} />
+        <div>
+          <FontAwesomeIcon
+            icon={faSignOutAlt}
+            onClick={logoutUser}
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}
+            title="Logout" />
+          {/* {isHovering ? "Logout" : null} */}
+        </div>
+
       </header>
       <div className="layout">
         <div>
@@ -87,12 +105,18 @@ function App() {
             editClicked={editClicked}
             removeClicked={removeClicked}
           />
-          <button onClick={newMovie}>New Movie</button>
+          <button
+            onClick={newMovie}
+            title="Add Movie">New Movie</button>
         </div>
 
         <MovieDetails movie={selectedMovie} updateMovie={loadMovie} />
         {editedMovie ?
-          < MovieForm movie={editedMovie} updatedMovie={updatedMovie} movieCreated={movieCreated} />
+          < MovieForm
+            movie={editedMovie}
+            updatedMovie={updatedMovie}
+            movieCreated={movieCreated}
+          />
           : null}
 
       </div>
