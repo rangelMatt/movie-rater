@@ -76,11 +76,15 @@ function Auth() {
         {regError ? <p style={{ color: "red" }}>A user with that <br />name already exists.</p> : null}
         {userError ? <p style={{ color: "red" }}>Username or<br /> Password Incorrect.</p> : null}
         {isLoginView ?
-          <button onClick={loginClicked} disabled={isDisabled}>Login</button> :
-          <button onClick={registerClicked}
-          
-          disabled={isDisabled}>Register</button>}
-            {/* TODO: 1. Get registerSuccess working properly */}
+          <button
+            title="Login"
+            onClick={loginClicked}
+            disabled={isDisabled}>Login</button> :
+          <button
+            title="Register"
+            onClick={registerClicked}
+            disabled={isDisabled}>Register</button>}
+        {/* TODO: 1. Get registerSuccess working properly */}
         <h4>
           {registered ? registerSuccess : null}
         </h4>
@@ -88,6 +92,7 @@ function Auth() {
           <div>Don't have an account yet?
             <p>
               <Button
+                title="Create Account"
                 variant="link"
                 className='here-button'
                 onClick={() => setIsLoginView(false)}
@@ -97,6 +102,7 @@ function Auth() {
           <div> You are already have an account?
             <p>
               <Button
+                title="Login"
                 variant="link"
                 className='here-button'
                 onClick={() => setIsLoginView(true)}
