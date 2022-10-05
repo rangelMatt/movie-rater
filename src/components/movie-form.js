@@ -54,7 +54,8 @@ function MovieForm(props) {
               updateClicked();
               refreshPage();
             }} disabled={isDisabled}>Update</button> :
-            <button onClick={createClicked} disabled={isDisabled}>Create</button>
+            <button 
+            onClick={createClicked} disabled={isDisabled}>Create</button>
           }
 
         </div>
