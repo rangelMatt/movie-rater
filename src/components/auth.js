@@ -3,7 +3,7 @@ import { API } from '../api-service';
 import { useCookies } from 'react-cookie';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Alert from './alert';
+import Alert from './alert'
 
 
 function Auth() {
@@ -56,22 +56,54 @@ function Auth() {
 
   const isDisabled = username.length === 0 || password.length === 0;
 
+  const handleSubmit = () => {
+    if (username && password) {
+    console.log('form submitted')
+    loginClicked()
+  };
+}
+
+
+
+  const handleKeyPress = e => {
+    const key = e.keyCode;
+    if (key === 13 || e.which === 13) {
+      handleSubmit();
+    }
+  }
+
   return (
+
     <div className="App">
       <header className="App-header">
-        {isLoginView ? <h1>Login</h1> : <h1>Register</h1>}
+        <div>
+          <h1>Welcome To Movie Rater!</h1>
+
+        </div>
+
+        {isLoginView ? <h1>Login</h1>
+          : <h1>Register</h1>}
       </header>
       <div className="login-container">
 
 
         <label htmlFor="username">Username</label><br />
-        <input id="username" type="text" placeholder="username" value={username}
+        <input
+          id="username"
+          type="text" placeholder="username"
+          value={username}
           onChange={e => setUsername(e.target.value)}
+          onKeyPress={handleKeyPress}
         /><br />
         <label htmlFor="password">Password</label><br />
         {/* TODO: add autofill for password and maybe username */}
-        <input id="password" type="password" placeholder="current-password"
-          value={password} onChange={e => setPassword(e.target.value)} /><br />
+        <input
+          id="password"
+          type="password" placeholder="current-password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          onKeyPress={handleKeyPress}
+        /><br />
 
         {regError ? <p style={{ color: "red" }}>A user with that <br />name already exists.</p> : null}
         {userError ? <p style={{ color: "red" }}>Username or<br /> Password Incorrect.</p> : null}
@@ -79,11 +111,13 @@ function Auth() {
           <button
             title="Login"
             onClick={loginClicked}
-            disabled={isDisabled}>Login</button> :
+            disabled={isDisabled}
+            >Login</button> :
           <button
             title="Register"
             onClick={registerClicked}
-            disabled={isDisabled}>Register</button>}
+            disabled={isDisabled}
+            >Register</button>}
         {/* TODO: 1. Get registerSuccess working properly */}
         <h4>
           {registered ? registerSuccess : null}
@@ -109,8 +143,18 @@ function Auth() {
               >Login here</Button>
             </p>
           </div>}
-
-
+      </div>
+      <div>
+        {isLoginView ? <><p className="intro container">
+          Save your Movies and rate them!
+          <br /> Ever wonder if you watched a movie and what you thought of it?<br />
+          Behold, Movie Rater! A place where you can store movies and their description.
+        </p></> : <><p className="intro container">
+          Register to gain access to Movie Rater!
+          <br /> From there you will be able to create a movie with a description as well as ranking the movie. <br />
+          A movie can be updated as well by clicking the edit button to change the name and/or description, or delete it all together!<br />
+          Have Fun!
+        </p></>}
       </div>
 
     </div>
