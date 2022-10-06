@@ -1,4 +1,34 @@
-# Getting Started with Create React App
+# Movie Rater
+
+## Project:  Movie Rater
+
+### Author: Matt Rangel
+
+### Description
+
+A site to create, read, update and delete movies based on Django and React. This includes a backend restful API and front-end web app.
+
+This site also includes user authentication and it communicates between the API and web app.
+
+JavaScript and Python languages were used to create the application.
+
+## Other Features to add
+
+| Type | Description | Current Status | Finished |
+|----------|----------|----------|------------------|
+| Feature Add | An Alert when registration is successful | WIP | - [x] todo |
+| Bug | Fix `onKeyPress` for `Create`/`New Movie` button | WIP | - [x] todo |
+| Feature Add | Connect to a Movie API | N/A | - [x] todo |
+| Feature Add | Cumulative Ratings  | N/A | - [x] todo |
+| Feature Add | Carousel Movie Pictures | N/A | - [x] todo |
+| Feature Add | Individual logins | N/A | - [x] todo |
+
+### Links and Resources
+
+- [Trigger Button onclick event on Enter](https://www.surajsharma.net/blog/react-onkeypress-form-submit)
+- [React-Django Full Stack Course](https://www.udemy.com/course/react-django-full-stack/)
+
+### Setup
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -13,6 +43,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
+### Tests
+
+To initiate tests, run `python3 manage.py test`# django-snacks
 
 ### `npm test`
 
