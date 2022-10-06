@@ -16,7 +16,7 @@ JavaScript and Python languages were used to create the application.
 
 | Type | Description | Current Status | Finished |
 |----------|----------|----------|------------------|
-| Feature Add | An Alert when registration is successful | WIP | - [x] todo |
+| Feature Add | An Alert when registration is successful | WIP | <ul><li>- [x] todo</li></ul> |
 | Bug | Fix `onKeyPress` for `Create`/`New Movie` button | WIP | - [x] todo |
 | Feature Add | Connect to a Movie API | N/A | - [x] todo |
 | Feature Add | Cumulative Ratings  | N/A | - [x] todo |
