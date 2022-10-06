@@ -17,11 +17,11 @@ JavaScript and Python languages were used to create the application.
 | Type | Description | Current Status | Finished |
 |----------|----------|----------|------------------|
 | Feature Add | An Alert when registration is successful | WIP | <ul><li>- [x] todo</li></ul> |
-| Bug | Fix `onKeyPress` for `Create`/`New Movie` button | WIP | - [x] todo |
-| Feature Add | Connect to a Movie API | N/A | - [x] todo |
-| Feature Add | Cumulative Ratings  | N/A | - [x] todo |
-| Feature Add | Carousel Movie Pictures | N/A | - [x] todo |
-| Feature Add | Individual logins | N/A | - [x] todo |
+| Bug | Fix `onKeyPress` for `Create`/`New Movie` button | WIP | <ul><li>- [x] todo</li></ul>|
+| Feature Add | Connect to a Movie API | N/A | <ul><li>- [x] todo</li></ul>|
+| Feature Add | Cumulative Ratings  | N/A | <ul><li>- [x] todo</li></ul>|
+| Feature Add | Carousel Movie Pictures | N/A | <ul><li>- [x] todo</li></ul>|
+| Feature Add | Individual logins | N/A | <ul><li>- [x] todo</li></ul>|
 
 ### Links and Resources
 
