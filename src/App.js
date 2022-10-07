@@ -36,11 +36,7 @@ function App() {
     if (!token['mr-token']) window.location.href = '/';
   }, [token])
 
-  const loadMovie = movie => {
-    setSelectedMovie(movie);
-    setEditedMovie(null);
-    updatedMovie(movie);
-  }
+  
 
   const editClicked = movie => {
     setEditedMovie(movie);
@@ -49,13 +45,20 @@ function App() {
 
   const updatedMovie = movie => {
     const newMovies = movies.map(mov => {
-      if (movies.id === movie.id) {
+      if (mov.id === movie.id) {
         return movie;
       }
       return mov;
     })
     setMovies(newMovies)
   }
+
+  const loadMovie = movie => {
+    setSelectedMovie(movie);
+    setEditedMovie(null);
+    updatedMovie(movie);
+  }
+
   const newMovie = () => {
     setEditedMovie({ title: '', description: '' });
     setSelectedMovie(null);
@@ -65,12 +68,7 @@ function App() {
     setMovies(newMovies);
   }
   const removeClicked = movie => {
-    const newMovies = movies.filter(mov => {
-      if (mov.id === movie.id) {
-        return false;
-      }
-      return true;
-    })
+    const newMovies = movies.filter( mov => mov.id !== movie.id);
     setMovies(newMovies);
   }
 
