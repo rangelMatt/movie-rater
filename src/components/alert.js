@@ -4,6 +4,7 @@ import React from 'react';
 import { useState } from 'react';
 
 export default function Alert({children, type, message}) {
+
   const [isShow, setIsShow] = useState(true);
 
   const renderElAlert =function () {
