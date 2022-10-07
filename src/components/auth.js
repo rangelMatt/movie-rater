@@ -133,7 +133,7 @@ function Auth() {
               >Create an account</Button>
             </p>
           </div> :
-          <div> You already have an account?
+          <div> You are already have an account?
             <p>
               <Button
                 title="Login"
