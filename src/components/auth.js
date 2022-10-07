@@ -4,6 +4,7 @@ import { useCookies } from 'react-cookie';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Alert from './alert'
+import Footer from './footer'
 
 
 function Auth() {
@@ -156,6 +157,7 @@ function Auth() {
           Have Fun!
         </p></>}
       </div>
+      <Footer/>  
 
     </div>
   )
