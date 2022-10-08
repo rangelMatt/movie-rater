@@ -30,7 +30,7 @@ function Auth() {
 
   const checkToken = resp => {
     if (resp.token) {
-      setToken('mr-token', resp.token);
+      setToken(['mr-token'], resp.token);
     } else {
       setUserError(true)
     }
