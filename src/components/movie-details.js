@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { useCookies } from 'react-cookie';
 
+const API_SERVER = process.env.REACT_APP_API_URL;
 
 function MovieDetails(props) {
 
@@ -18,7 +19,7 @@ function MovieDetails(props) {
   }
 
   const rateClicked = rate => e => {
-    fetch(`http://127.0.0.1:8000/api/movies/${mov.id}/rate_movie/`, {
+    fetch(`${API_SERVER}/api/movies/${mov.id}/rate_movie/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
